@@ -17,11 +17,11 @@ import java.util.concurrent.ScheduledFuture;
 
 import static android.os.SystemClock.sleep;
 
-@TeleOp(name = "FTC2025")
+@TeleOp(name = "CODRU2025")
 public class MainTeleOp extends OpMode {
     private Robot robot;
     private Controller controller1, controller2;
-    private SampleMecanumDrive drive;
+//    private SampleMecanumDrive drive;
 
     private int raise_value, arm_value = 0, lift_value;
     public double RAISE_POWER = 1.0;
@@ -84,8 +84,8 @@ public class MainTeleOp extends OpMode {
         controller2 = new Controller(gamepad2);
 
 
-        drive = new SampleMecanumDrive(hardwareMap);
-        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        drive = new SampleMecanumDrive(hardwareMap);
+//        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         frontLeft = hardwareMap.get(DcMotor.class, "leftFront");
         backLeft = hardwareMap.get(DcMotor.class, "leftRear");
@@ -203,9 +203,9 @@ public class MainTeleOp extends OpMode {
         if (controller1.XOnce()) {
             robot.gripper.score_object_release_position();
         }
-        if (controller1.AOnce()) {
-            robot.gripper.score_object_chamber_position();
-        }
+//        if (controller1.AOnce()) {
+//            robot.gripper.score_object_chamber_position();
+//        }
         if (controller1.BOnce()) {
             if(gripper_grab) {
                 robot.gripper.outtake_release_position();

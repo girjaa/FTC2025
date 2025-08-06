@@ -23,10 +23,10 @@ public class Gripper {
     */
 
     private final double PASS_OBJECT_LEFT_PICKUP = 0.85, PASS_OBJECT_LEFT_RELEASE = -0.90;
-    private final double PASS_OBJECT_RIGHT_PICKUP = -1, PASS_OBJECT_RIGHT_RELEASE = 0.90;
+    private final double PASS_OBJECT_RIGHT_PICKUP = -1, PASS_OBJECT_RIGHT_RELEASE = 1;
 
-    private final double SCORE_OBJECT_LEFT_PICKUP = -1, SCORE_OBJECT_LEFT_RELEASE = 1;
-    private final double SCORE_OBJECT_RIGHT_PICKUP = 1, SCORE_OBJECT_RIGHT_RELEASE = -1;
+    private final double SCORE_OBJECT_LEFT_PICKUP = 0.5, SCORE_OBJECT_LEFT_RELEASE = 1; //modific acum am modificast
+    private final double SCORE_OBJECT_RIGHT_PICKUP = 1, SCORE_OBJECT_RIGHT_RELEASE = 0.5; //modific
     private final double OUTAKE_GRIPPER_CHAMBER_LEFT = 0 , OUTAKE_GRIPPER_CHAMBER_RIGHT = 0;
 
     private final double INTAKE_GRIPPER_GRAB = 0.8, INTAKE_GRIPPER_RELEASE = 0.2;
