@@ -21,7 +21,7 @@ import static android.os.SystemClock.sleep;
 public class MainTeleOp extends OpMode {
     private Robot robot;
     private Controller controller1, controller2;
-//    private SampleMecanumDrive drive;
+    private SampleMecanumDrive drive;
 
     private int raise_value, arm_value = 0, lift_value;
     public double RAISE_POWER = 1.0;
@@ -84,8 +84,8 @@ public class MainTeleOp extends OpMode {
         controller2 = new Controller(gamepad2);
 
 
-//        drive = new SampleMecanumDrive(hardwareMap);
-//        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        drive = new SampleMecanumDrive(hardwareMap);
+        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         frontLeft = hardwareMap.get(DcMotor.class, "leftFront");
         backLeft = hardwareMap.get(DcMotor.class, "leftRear");
@@ -129,37 +129,37 @@ public class MainTeleOp extends OpMode {
         // =======================
 
         // --------- movement general al robotului ---------
-//        drive.setWeightedDrivePower(
-//                new Pose2d( /// imi pare rau pt ce urmeaza sa fac, timpuri disperate...
-//                        (-controller1.left_stick_y * movement_speed),
-//                        (-controller1.left_stick_x * movement_speed),
-//                        (-controller1.right_stick_x * movement_speed)  // gen astea negative / pozitive sau schimbate intre ele
-//                )
-//        );
+        drive.setWeightedDrivePower(
+                new Pose2d( /// imi pare rau pt ce urmeaza sa fac, timpuri disperate...
+                        (-controller1.left_stick_y * movement_speed),
+                        (-controller1.left_stick_x * movement_speed),
+                        (-controller1.right_stick_x * movement_speed)  // gen astea negative / pozitive sau schimbate intre ele
+                )
+        );
 
-        double y = -controller1.left_stick_y;  // Forward is negative in FTC
-        double x = controller1.left_stick_x;  // Strafing (slight boost to compensate)
-        double rx = -controller1.right_stick_x;  // Rotation
+//        double x = controller1.left_stick_x;  // Strafing (slight boost to compensate)
+//        double rx = controller1.right_stick_x;  // Rotation
+//        double y = controller1.left_stick_y;  // Forward is negative in FTC
 
-        double frontLeftPower = y + x + rx;
-        double backLeftPower = y - x + rx;
-        double frontRightPower = y - x - rx;
-        double backRightPower = y + x - rx;
-
-        double max = Math.max(Math.abs(frontLeftPower), Math.max(Math.abs(backLeftPower),
-                Math.max(Math.abs(frontRightPower), Math.abs(backRightPower))));
-
-        if (max > 1.0) {
-            frontLeftPower /= max;
-            backLeftPower /= max;
-            frontRightPower /= max;
-            backRightPower /= max;
-        }
-
-        frontLeft.setPower(frontLeftPower);
-        backLeft.setPower(backLeftPower);
-        frontRight.setPower(frontRightPower);
-        backRight.setPower(backRightPower);
+//        double frontLeftPower = y + x + rx;
+//        double backLeftPower = y - x + rx;
+//        double frontRightPower = y - x - rx;
+//        double backRightPower = y + x - rx;
+//
+//        double max = Math.max(Math.abs(frontLeftPower), Math.max(Math.abs(backLeftPower),
+//                Math.max(Math.abs(frontRightPower), Math.abs(backRightPower))));
+//
+//        if (max > 1.0) {
+//            frontLeftPower /= max;
+//            backLeftPower /= max;
+//            frontRightPower /= max;
+//            backRightPower /= max;
+//        }
+//
+//        frontLeft.setPower(frontLeftPower);
+//        backLeft.setPower(backLeftPower);
+//        frontRight.setPower(frontRightPower);
+//        backRight.setPower(backRightPower);
 
         //----------- gripper ---------------
 
